@@ -95,7 +95,7 @@ async function createWindow() {
         log.error("Can't Authenticate.");
         mainWindow.close()
     } else {
-        mainWindow.loadFile("../renderer/index.html");
+        mainWindow.loadFile(path.join(__dirname, "../renderer/index.html"),);
 
         tweet = new Tweet(twitterConsumerToken, twitterAccessToken, mainWindow);
 

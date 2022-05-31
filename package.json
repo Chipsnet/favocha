@@ -1,10 +1,11 @@
 {
     "name": "favocha",
-    "version": "1.0.0",
-    "description": "A minimal Electron application",
+    "version": "0.1.0",
+    "description": "VRChatお気に入りワールドツイートアプリ",
+    "main": "./main/main.js",
     "scripts": {
         "start": "electron ./main/main.js",
-        "dev": "node ./main/tweet.js"
+        "dist": "electron-builder"
     },
     "repository": "https://github.com/electron/electron-quick-start",
     "keywords": [
@@ -14,10 +15,21 @@
         "tutorial",
         "demo"
     ],
-    "author": "GitHub",
+    "build": {
+        "appId": "net.starryrain.favocha",
+        "productName": "favocha",
+        "win": {
+            "target": ["nsis", "portable"]
+        },
+        "nsis": {
+            "oneClick": false
+        }
+    },
+    "author": "Minato Minami",
     "license": "MPL-2.0",
     "devDependencies": {
-        "electron": "^18.2.3"
+        "electron": "^18.2.3",
+        "electron-builder": "^23.0.3"
     },
     "dependencies": {
         "chokidar": "^3.5.3",
