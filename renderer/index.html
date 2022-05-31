@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+        <meta
+            http-equiv="Content-Security-Policy"
+            content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src data:;"
+        />
+        <link href="./styles.css" rel="stylesheet" />
+        <link rel="stylesheet" href="./css/bootstrap.min.css" />
+        <script src="./js/bootstrap.min.js"></script>
+        <title>Favocha - VRChatお気に入りワールドツイートアプリ</title>
+    </head>
+    <body>
+        <div class="p-4">
+            <h1>Favocha <span class="fs-6">by 巳波みなと</span></h1>
+
+            <ul class="nav nav-tabs mt-4" id="myTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button
+                        class="nav-link active"
+                        id="home-tab"
+                        data-bs-toggle="tab"
+                        data-bs-target="#home"
+                        type="button"
+                        role="tab"
+                        aria-controls="home"
+                        aria-selected="true"
+                    >
+                        Status
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button
+                        class="nav-link"
+                        id="profile-tab"
+                        data-bs-toggle="tab"
+                        data-bs-target="#profile"
+                        type="button"
+                        role="tab"
+                        aria-controls="profile"
+                        aria-selected="false"
+                    >
+                        Settings
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button
+                        class="nav-link"
+                        id="contact-tab"
+                        data-bs-toggle="tab"
+                        data-bs-target="#contact"
+                        type="button"
+                        role="tab"
+                        aria-controls="contact"
+                        aria-selected="false"
+                    >
+                        About
+                    </button>
+                </li>
+            </ul>
+            <div class="tab-content" id="myTabContent">
+                <div
+                    class="tab-pane fade show active"
+                    id="home"
+                    role="tabpanel"
+                    aria-labelledby="home-tab"
+                >
+                    <div class="px-3 py-4">
+                        <h2 class="fs-4">Status</h2>
+                        <p>
+                            お気に入り監視状態
+                            <span class="badge bg-primary">動作中</span>
+                        </p>
+                        <h3 class="fs-6">
+                            監視中のファイルパス
+                        </h3>
+                        <span id="file-path">
+                            現在監視中のファイルはありません
+                        </span>
+                        <h3 class="fs-6 mt-3">Twitter</h3>
+                        <p>ログイン中のアカウント名: <span id="twitter-name"></span></p>
+                    </div>
+                </div>
+                <div
+                    class="tab-pane fade"
+                    id="profile"
+                    role="tabpanel"
+                    aria-labelledby="profile-tab"
+                >
+                    <div class="px-3 py-4">
+                        <h2 class="fs-4">
+                            Settings
+                        </h2>
+                        <h3 class="fs-6">Twitterの認証情報を削除する</h3>
+                        <button id="delete-twitter" type="button" class="btn btn-danger">認証情報を削除する</button>
+                    </div>
+                </div>
+                <div
+                    class="tab-pane fade"
+                    id="contact"
+                    role="tabpanel"
+                    aria-labelledby="contact-tab"
+                >
+                    <div class="px-3 py-4">
+                        <h2 class="fs-4">
+                            Favocha
+                            <span id="app-version" class="badge bg-primary">Loading...</span>
+                        </h2>
+                        <p>開発者: 巳波みなと</a></p>
+                        <h2 class="fs-4">Version Info</h2>
+                        <p class="mb-0">Node.js Version  <span id="node-version" class="badge bg-primary">Loading...</span></p>                        
+                        <p class="mb-0">Chromium Version  <span id="chrome-version" class="badge bg-primary">Loading...</span></p>
+                        <p>Electron Version  <span id="electron-version" class="badge bg-primary">Loading...</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 5">
+            <div id="liveToast" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="toast-header">
+                    <strong id="toast-title" class="me-auto"></strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+                <div id="toast-body" class="toast-body"></div>
+            </div>
+        </div>
+
+        <!-- You can also require other files to run in this process -->
+        <script src="./renderer.js"></script>
+    </body>
+</html>

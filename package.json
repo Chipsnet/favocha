@@ -1,0 +1,34 @@
+{
+    "name": "favocha",
+    "version": "1.0.0",
+    "description": "A minimal Electron application",
+    "scripts": {
+        "start": "electron ./main/main.js",
+        "dev": "node ./main/tweet.js"
+    },
+    "repository": "https://github.com/electron/electron-quick-start",
+    "keywords": [
+        "Electron",
+        "quick",
+        "start",
+        "tutorial",
+        "demo"
+    ],
+    "author": "GitHub",
+    "license": "MPL-2.0",
+    "devDependencies": {
+        "electron": "^18.2.3"
+    },
+    "dependencies": {
+        "chokidar": "^3.5.3",
+        "electron-log": "^4.4.7",
+        "electron-prompt": "^1.7.0",
+        "electron-store": "^8.0.1",
+        "oauth-electron-twitter": "^1.0.124",
+        "ogp-parser": "^0.6.0",
+        "open": "^8.4.0",
+        "tail-file": "^1.4.15",
+        "twitter": "^1.7.1",
+        "twitter-pin-auth": "^0.2.0"
+    }
+}
