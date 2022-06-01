@@ -28,8 +28,8 @@
     "author": "Minato Minami",
     "license": "MPL-2.0",
     "devDependencies": {
-        "electron": "^18.2.3",
-        "electron-builder": "^23.0.3"
+        "electron": "18.2.4",
+        "electron-builder": "23.0.3"
     },
     "dependencies": {
         "chokidar": "^3.5.3",
