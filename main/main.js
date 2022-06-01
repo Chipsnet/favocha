@@ -87,6 +87,7 @@ async function createWindow() {
         webPreferences: {
             preload: path.join(__dirname, "../renderer/preload.js"),
         },
+        autoHideMenuBar: true
     });
 
     await twitterAuth(mainWindow);
