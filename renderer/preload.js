@@ -21,5 +21,6 @@ contextBridge.exposeInMainWorld('electronAPI', {
     getTwitterName: () => ipcRenderer.invoke('getTwitterName'),
     handleTweetSend: (callback) => ipcRenderer.on('tweetSend', callback),
     handlePathChanged: (callback) => ipcRenderer.on('pathChanged', callback),
-    deleteTwitterData: () => ipcRenderer.send('deleteTwitterData')
+    deleteTwitterData: () => ipcRenderer.send('deleteTwitterData'),
+    toggleTweetState: () => ipcRenderer.invoke('toggleTweetState')
 })

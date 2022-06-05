@@ -1,6 +1,6 @@
 {
     "name": "favocha",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "description": "VRChatお気に入りワールドツイートアプリ",
     "main": "./main/main.js",
     "scripts": {
