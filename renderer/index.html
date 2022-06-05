@@ -5,7 +5,7 @@
         <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
         <meta
             http-equiv="Content-Security-Policy"
-            content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src data:;"
+            content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src data: https://cdn.ko-fi.com;"
         />
         <link href="./styles.css" rel="stylesheet" />
         <link rel="stylesheet" href="./css/bootstrap.min.css" />
@@ -69,10 +69,11 @@
                 >
                     <div class="px-3 py-4">
                         <h2 class="fs-4">Status</h2>
-                        <p>
-                            お気に入り監視状態
-                            <span class="badge bg-primary">動作中</span>
+                        <p class="mb-0">
+                            お気に入りツイート状態
+                            <span id="tweetState" class="badge bg-primary">動作中</span>
                         </p>
+                        <button id="toggleTweetState" type="button" class="btn btn-danger btn-sm mt-2 mb-4">一時停止する</button>
                         <h3 class="fs-6">
                             監視中のファイルパス
                         </h3>
@@ -90,11 +91,11 @@
                     aria-labelledby="profile-tab"
                 >
                     <div class="px-3 py-4">
-                        <h2 class="fs-4">
+                        <h2 class="fs-4 mb-3">
                             Settings
                         </h2>
                         <h3 class="fs-6">Twitterの認証情報を削除する</h3>
-                        <button id="delete-twitter" type="button" class="btn btn-danger">認証情報を削除する</button>
+                        <button id="delete-twitter" type="button" class="btn btn-danger btn-sm">認証情報を削除する</button>
                     </div>
                 </div>
                 <div
@@ -108,11 +109,15 @@
                             Favocha
                             <span id="app-version" class="badge bg-primary">Loading...</span>
                         </h2>
-                        <p>開発者: 巳波みなと</a></p>
+                        <p>開発者: <a href="https://twitter.com/minatoo86" target="_blank">巳波みなと</a></p>
                         <h2 class="fs-4">Version Info</h2>
                         <p class="mb-0">Node.js Version  <span id="node-version" class="badge bg-primary">Loading...</span></p>                        
                         <p class="mb-0">Chromium Version  <span id="chrome-version" class="badge bg-primary">Loading...</span></p>
                         <p>Electron Version  <span id="electron-version" class="badge bg-primary">Loading...</span></p>
+                        <h2 class="fs-4">Donation</h2>
+                        <p>このソフトウェアは無料で提供されています！是非開発のご支援をお願いします。</p>
+                        <a href='https://ko-fi.com/A0A81VPXD' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://cdn.ko-fi.com/cdn/kofi2.png?v=3' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
+                        <a href="https://minato86.fanbox.cc/" target="_blank" class="btn btn-outline-warning">Pixiv Fanbox</a>
                     </div>
                 </div>
             </div>

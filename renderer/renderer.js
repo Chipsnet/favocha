@@ -31,3 +31,24 @@ const twitterBtn = document.getElementById('delete-twitter')
 twitterBtn.addEventListener('click', () => {
     window.electronAPI.deleteTwitterData()
 })
+
+const toggleTweetStateBtn = document.getElementById('toggleTweetState')
+const TweetStateBadge = document.getElementById('tweetState')
+
+toggleTweetStateBtn.addEventListener('click', async () => {
+    tweetState = await window.electronAPI.toggleTweetState()
+
+    if (tweetState) {
+        toggleTweetStateBtn.className = "btn btn-danger btn-sm mt-2 mb-4"
+        toggleTweetStateBtn.innerText = "一時停止する"
+
+        TweetStateBadge.className = "badge bg-primary"
+        TweetStateBadge.innerText = "動作中"
+    } else {
+        toggleTweetStateBtn.className = "btn btn-primary btn-sm mt-2 mb-4"
+        toggleTweetStateBtn.innerText = "再開する"
+
+        TweetStateBadge.className = "badge bg-danger"
+        TweetStateBadge.innerText = "一時停止中"
+    }
+})

@@ -4,7 +4,7 @@ const log = require("electron-log");
 const path = require("path");
 const Store = require("electron-store");
 const { Tweet } = require("./tweet");
-const hookLog = require("./hookLog");
+const { Hook } = require("./hookLog");
 
 const TwitterPinAuth = require("twitter-pin-auth");
 const open = require("open");
@@ -44,7 +44,7 @@ async function twitterAuth(mainWindow) {
         let twitterAuthUrl = await twitterPinAuth.requestAuthUrl();
 
         open(twitterAuthUrl);
-        log.debug(twitterAuthUrl);
+        log.debug("Twitter Auth Url:", twitterAuthUrl);
 
         let inputPin = await prompt({
             title: "Twitter認証",
@@ -57,24 +57,22 @@ async function twitterAuth(mainWindow) {
         }, mainWindow);
 
         if (inputPin === null) {
-            log.error("canceled");
+            log.error("Pin input canceled.");
             return;
         } else {
-            log.info(inputPin);
+            log.info("Pin: ", inputPin);
         }
 
         let oauthResponse = await twitterPinAuth.authorize(inputPin).catch(function(err) {
-            log.error(err);
+            log.error("Twitter Auth error: ", err);
         });
-
-        log.info(oauthResponse);
 
         store.set("token.key", oauthResponse.accessTokenKey);
         store.set("token.secret", oauthResponse.accessTokenSecret);
 
         twitterAccessToken = store.get("token");
 
-        log.info(oauthResponse);
+        log.info("Twitter Auth Completed.");
     }
 
     return;
@@ -99,8 +97,15 @@ async function createWindow() {
         mainWindow.loadFile(path.join(__dirname, "../renderer/index.html"),);
 
         tweet = new Tweet(twitterConsumerToken, twitterAccessToken, mainWindow);
+        logHook = new Hook(mainWindow, tweet)
 
-        hookLog.initChokidar(tweet, mainWindow);
+        logHook.initChokidar();
+
+        mainWindow.webContents.on('new-window', (e, url) => {
+            log.debug('new-window: ', url)
+            e.preventDefault()
+            open(url)
+        })
     }
 }
 
@@ -110,13 +115,24 @@ async function getTwitterName() {
 
     return twittername;
 }
+
+async function toggleTweetState() {
+    logHook.tweetState = !logHook.tweetState
+
+    log.info('Tweet state toggled: ', logHook.tweetState)
+
+    return logHook.tweetState
+}
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
 app.whenReady().then(async () => {
     ipcMain.handle('getTwitterName', getTwitterName)
+    ipcMain.handle('toggleTweetState', toggleTweetState)
 
     ipcMain.on('deleteTwitterData', async (event, title) => {
+        log.info("Account info delete reqest recieved.")
+
         let res = await dialog.showMessageBox(mainWindow, {
             type: "question",
             message:
@@ -124,8 +140,12 @@ app.whenReady().then(async () => {
             buttons: ["削除する！", "やめとく！"]
         });
 
+        log.info("Dialog response: ", res)
+
         if (res.response === 0) {
             store.delete("token");
+
+            log.info("Account info deleted.")
 
             await dialog.showMessageBox(mainWindow, {
                 type: "question",
@@ -151,6 +171,8 @@ app.whenReady().then(async () => {
 // for applications and their menu bar to stay active until the user quits
 // explicitly with Cmd + Q.
 app.on("window-all-closed", function () {
+    log.info("window-all-closed event.")
+
     if (process.platform !== "darwin") app.quit();
 });
 
