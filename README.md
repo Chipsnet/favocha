@@ -7,7 +7,7 @@ favochaは、VRChatでFavoriteしたワールドを瞬時にツイートして�
 ビルド済みの実行ファイルはGitHub ReleaseとBoothの両方で配布しています。
 
 - [GitHub Releases](https://github.com/Chipsnet/favocha/releases)
-- Booth(Comming Soon...)
+- [Booth](https://starryrain.booth.pm/items/3929243)
 
 ダウンロードした実行ファイルを実行し、インストールして起動します。
 
