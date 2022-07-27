@@ -988,10 +988,10 @@ electron-store@^8.0.1:
     conf "^10.0.3"
     type-fest "^1.0.2"
 
-electron@19.0.3:
-  version "19.0.3"
-  resolved "https://registry.npmjs.org/electron/-/electron-19.0.3.tgz"
-  integrity sha512-V/8pFkXUOsoHcBzuTYVSbIQKLIwI/FAxfpvbkMazdaO/weZoIf9AN3Qc4Wuo9+489mhelDYc8lSX5N7c6A5n6A==
+electron@19.0.10:
+  version "19.0.10"
+  resolved "https://registry.npmjs.org/electron/-/electron-19.0.10.tgz"
+  integrity sha512-EiWtPWdD7CzkRkp1cw7t0N9W2qhI5XZOudHX7daOh5wI076nsdV2dtlAf/XyTHhPNoKR5qhTWrSnYL9PY6D1vg==
   dependencies:
     "@electron/get" "^1.14.1"
     "@types/node" "^16.11.26"
