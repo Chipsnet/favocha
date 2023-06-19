@@ -2350,10 +2350,10 @@ supports-color@^7.1.0:
   dependencies:
     has-flag "^4.0.0"
 
-tail-file@^1.4.15:
-  version "1.4.15"
-  resolved "https://registry.npmjs.org/tail-file/-/tail-file-1.4.15.tgz"
-  integrity sha512-SOlfy4U7USsuLNTt2Xa8bPE36710tBgothRg0VWndNz0sRWMEEBzVT4Bbg8J9w1y7cRApPgkSpSPtXFYXJsQgw==
+tail-file@^1.4.16:
+  version "1.4.16"
+  resolved "https://registry.yarnpkg.com/tail-file/-/tail-file-1.4.16.tgz#61861e05f43956f8e30748df004cc4ffa61f8cf5"
+  integrity sha512-K1SAxKcAhJU1aJytAbA/jSRxL4PsYuDWNCGSsVcTG1SLKFW9FRGj7K3f6F/Leb9XLR7UIe7EfFza3sH12ztPBw==
   dependencies:
     debug "^4.1.1"
 
