@@ -28,7 +28,7 @@
     "author": "Minato Minami",
     "license": "MPL-2.0",
     "devDependencies": {
-        "electron": "19.0.3",
+        "electron": "19.1.9",
         "electron-builder": "23.0.3"
     },
     "dependencies": {
